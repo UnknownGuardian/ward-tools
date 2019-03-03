@@ -12,12 +12,15 @@
           <ImagesImport></ImagesImport>
         </md-step>
         <md-step id="preview" md-label="Download">
+          <h1>Directory</h1>
+          <p class="md-body-1">Create a directory of Names, Phone Numbers, and pictures of members of your ward, grouped by last name or apartment.</p>
           <Directory></Directory>
+          <h1>Data Sheets:</h1>
+          <p class="md-body-1">Create a data sheet of each member in your ward, with key information from your survey.</p>
+          <DataSheet></DataSheet>
         </md-step>
       </md-steppers>
     </md-card>
-
-    <!--<DataSheet></DataSheet>-->
   </div>
 </template>
 
