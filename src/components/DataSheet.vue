@@ -146,13 +146,11 @@ export default {
           const image = Media.addImage(doc, Buffer.from(person.photo.data, "base64"), 200, 300,{
             floating: {
               horizontalPosition: {
-                relative: HorizontalPositionRelativeFrom.RIGHT_MARGIN,
-                align: HorizontalPositionAlign.RIGHT
+                offset: 4714400,
               },
               verticalPosition: {
-                relative: VerticalPositionRelativeFrom.TOP_MARGIN,
-                align: VerticalPositionAlign.TOP
-              }
+                  offset: 814400,
+              },
             }
           });
           doc.addImage(image);
