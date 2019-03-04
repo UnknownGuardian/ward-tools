@@ -1,12 +1,24 @@
 <template>
   <div>
     <div class="md-title">Export Images from Google Drive</div>
+    <div class="md-body-1">
+      <p class="md-body-1">
+      A zip file of images with names of ward members (i.e. Matt Pope.jpg will match to a member Matt Pope) can be uploaded.</p>
+      <p class="md-body-2">For Best Results:</p>
+      <p class="md-body-1">
+        <ul>
+          <li>Crop images to 200 width, 300 height, or a similar 2:3 ratio.</li>
+          <li>Avoid different spellings or nicknames. This increases the chance that the picture can not be automatically matched to the correct person.</li>
+        </ul>
+        Pictures that are unable to be matched will be displayed below, and they can be matched up with the Word document manually.
+      </p>
+    </div>
     <md-field>
-      <label>Single</label>
+      <label>Image Zip File</label>
       <md-file v-model="single" @md-change="readCSV" />
     </md-field>
 
-    <div class="md-body-1">Matched {{ photoCount - unknownPhotos.length }} photos to members.</div>
+    <div class="md-body-1">Matched {{ photoCount - unknownPhotos.length }} photos to members. {{ totalPhotos - photoCount }} left.</div>
 
     <md-table v-if="unknownPhotos.length" :value="unknownPhotos" md-sort="name" md-sort-order="asc">
       <md-table-toolbar>
@@ -31,6 +43,7 @@ export default {
     return {
       single: null,
       photoCount: 0,
+      totalPhotos: 0,
     };
   },
   computed: {
@@ -79,6 +92,7 @@ export default {
 
       const keys = Object.keys(zip.files);
       console.log(zip, "Amount:", keys.length);
+      this.totalPhotos = keys.length;
       for(var index = 0; index < keys.length; index++) {
         const key = keys[index]; 
         this.photoCount++
